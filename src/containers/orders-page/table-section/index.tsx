@@ -21,8 +21,7 @@ import en from '@shopify/polaris/locales/en.json';
 import type { IndexFiltersProps, Range, TabProps } from '@shopify/polaris';
 import { useState, useCallback, FC, useEffect } from 'react';
 import '@shopify/polaris/build/esm/styles.css';
-import useGetAllOrders from '@/app/hooks/orders/getAll';
-import getAllOrders, { Order } from '@/app/api/orders/getAll/route';
+import { Order } from '@/app/api/orders/getAll/route';
 
 interface OrdersTableSectionProps {
 	orders: Order[];
@@ -38,8 +37,6 @@ const OrdersTableSection: FC<OrdersTableSectionProps> = ({ orders }) => {
 			setFilteredOrders([]);
 		};
 	}, [orders]);
-
-	console.log({ filteredOrders, orders });
 
 	const sleep = (ms: number) =>
 		new Promise((resolve) => setTimeout(resolve, ms));
@@ -329,8 +326,6 @@ const OrdersTableSection: FC<OrdersTableSectionProps> = ({ orders }) => {
 	);
 
 	useEffect(() => {
-		console.log('attributedStaffName', { attributedStaffName });
-
 		setFilteredOrders((prev) =>
 			prev
 				.filter((order) => {

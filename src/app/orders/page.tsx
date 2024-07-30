@@ -17,6 +17,7 @@ const OrdersPage: FC<OrdersPageProps> = ({}) => {
 
 	const fetchOrders = async () => {
 		const res = await getAllOrders();
+		res.map((order) => (order.date = new Date(order.date)));
 		setOrders(res);
 	};
 
